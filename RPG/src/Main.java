@@ -8,18 +8,25 @@ public class Main {
         while(i == 0) {
             System.out.printf("ESCOLHA SUA CLASSE%n1 - Guerreiro%n2 - Mago%n3 - Arqueiro%n");
             int classe = scanner.nextInt();
-
+            String nome;
             if (classe == 1) {
-                Guerreiro caio = new Guerreiro("caio");
-                System.out.println(caio.name + " o Guerreiro foi Invocado");
+                System.out.print("Digite o Nome do seu Guerreiro: ");
+                nome = scanner.next();
+                Guerreiro player = new Guerreiro(nome);
+                System.out.println(player.name + " o Guerreiro foi Invocado");
                 i = 1;
             } else if (classe == 2) {
-                Mago caio = new Mago("caio");
-                System.out.println(caio.name + " o Mago foi Invocado");
+                System.out.print("Digite o Nome do seu Mago: ");
+                nome = scanner.next();
+                Mago player = new Mago(nome);
+                System.out.println(player.name + " o Mago foi Invocado");
                 i = 1;
             } else if (classe == 3) {
-                Arqueiro caio = new Arqueiro("caio");
-                System.out.println(caio.name + " o Arqueiro foi Invocado");
+                System.out.print("Digite o Nome do seu Arqueiro: ");
+                nome = scanner.next();
+                Arqueiro player = new Arqueiro(nome);
+                System.out.println(player.name + " o Arqueiro foi Invocado");
+
                 i = 1;
             } else {
                 System.out.println("Opção invalida!");
