@@ -22,4 +22,13 @@ public class Personagem extends Entidade{
             System.out.printf("%s Defendeu completamente!%n", this.name);
         }
     }
+    public void reciveDamege(double attack){
+        this.healthPoints = this.healthPoints - attack;
+        if (this.healthPoints <=0){
+            System.out.println("Você foi Atingido! "+this.name+" Você Morreu!!");
+
+        }else{
+            System.out.printf("Você foi Atingido!%n%s agora possui %.2f de HP restante!%n", this.name, this.healthPoints);
+        }
+    }
 }
