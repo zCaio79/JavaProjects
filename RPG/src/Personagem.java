@@ -1,9 +1,11 @@
 public class Personagem extends Entidade{
-    public Personagem(String name, double healthPoints, double damagePoints, double shield){
+    public String specialname;
+    public Personagem(String name, double healthPoints, double damagePoints, double shield, String specialname){
         this.name = name;
         this.healthPoints = healthPoints;
         this.damagePoints = damagePoints;
         this.shield = shield;
+        this.specialname = specialname;
     }
     //(Atacar) Retorna a potencia do ataque
     public double attack(){return this.damagePoints;}
@@ -30,5 +32,11 @@ public class Personagem extends Entidade{
         }else{
             System.out.printf("Você foi Atingido!%n%s agora possui %.2f de HP restante!%n", this.name, this.healthPoints);
         }
+    }
+    public double Special(){
+        return 0;
+    }
+    public void cura(){
+        this.healthPoints = 8;
     }
 }

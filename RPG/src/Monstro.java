@@ -22,7 +22,9 @@ public class Monstro extends Entidade{
         if (this.healthPoints <=0){
             System.out.println("Ataque Efetivo! "+this.name+" Foi Derrotado!!");
 
-        }else{
+        }else if (attack == 0) {
+            return;
+        } else{
             System.out.printf("Ataque Efetivo!%n%s agora possui %.2f de HP restante!%n", this.name, this.healthPoints);
         }
     }
