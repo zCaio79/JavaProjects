@@ -5,43 +5,170 @@ public class Main {
     public static void main(String[] args) {
         boolean isSystemOn = true;
         int choose = 0;
+        int i = 0;
+
+        String search = null;
+
         Scanner scanner = new Scanner(System.in);
 
-        String nomelivro = null;
-        String autor = null;
+        String nomelivro_nomeusuario = null;
+        String autor_endereco = null;
         String editora = null;
-        String isbn = null;
-        int anopubli = 0;
+        String isbn_email = null;
+        String ano_telefone = null;
 
         Livro livro;
         Usuario user;
 
         ArrayList<Livro> acervo = new ArrayList<>();
         ArrayList<Usuario> usuarios = new ArrayList<>();
+        ArrayList<Registro> registros = new ArrayList<>();
 
-        usuarios.add(user = new Usuario("caraio","caraio",4545456,"aasdasd"));
         //looping system
 
         while (isSystemOn){
-            //cadastrar livro, cadastrar usuario
-            choose =1;
+            i =0;
+            limpaChat();
+            System.out.print("\t\tBibliotech\n\n(1) - Cadastrar Livro\n(2) - Cadastrar Usuário\n(3) - Consultar Acervo\n(0) - Sair\nSelecione a opção desejada: ");
+            choose = scanner.nextInt();
+
             switch (choose){
-                case 1:
-                    System.out.print("Digite o Nome do Livro: ");
-                    nomelivro = scanner.nextLine();
-                    System.out.print("Digite o Nome do Autor: ");
-                    autor = scanner.nextLine();
-                    System.out.print("Digite o Nome da Editora: ");
-                    editora = scanner.nextLine();
-                    System.out.print("Digite o ISBN do Livro: ");
-                    isbn = scanner.nextLine();
-                    System.out.print("Digite o Ano de Publicação: ");
-                    anopubli = scanner.nextInt();
-                    acervo.add(livro = new Livro(nomelivro,autor,editora,isbn,anopubli));
-                    limpaChat();
-                    System.out.printf("\nLivro Cadastrado na Biblioteca!\n\n\tLivro: %s\n\tAutor: %s\n\tEditora: %s\n\tISBN: %s\n\tAno Publicação: %d",
-                            nomelivro,autor,editora,isbn,anopubli);
+
+                //Sair
+
+                case 0:
+                    System.out.println("Sistema Finalizado!");
+                    isSystemOn = false;
                     break;
+
+                //Cadastrar Livro
+                case 1:
+                    limpaChat();
+                    System.out.println("\t\tCadastro de Livro");
+                    while (i == 0) {
+
+                        System.out.println("\nDigite o Nome do Livro: ");
+                        nomelivro_nomeusuario = scanner.next();
+                        System.out.println("\nDigite o Nome do Autor: ");
+                        autor_endereco = scanner.next();
+                        System.out.println("\nDigite o Nome da Editora: ");
+                        editora = scanner.next();
+                        System.out.println("\nDigite o ISBN do Livro: ");
+                        isbn_email = scanner.next();
+                        System.out.println("\nDigite o Ano de Publicação: ");
+                        ano_telefone = scanner.next();
+
+                        if((nomelivro_nomeusuario!="")&&(autor_endereco!="")&&(editora!="")&&(isbn_email!="")&&(ano_telefone!="")) {
+                            acervo.add(livro = new Livro(nomelivro_nomeusuario, autor_endereco, editora, isbn_email, ano_telefone));
+                            limpaChat();
+                            System.out.printf("\nLivro Cadastrado na Biblioteca!\n\n\tLivro: %s\n\tAutor: %s\n\tEditora: %s\n\tISBN: %s\n\tAno Publicação: %s",
+                                    nomelivro_nomeusuario, autor_endereco, editora, isbn_email, ano_telefone);
+                            try {
+                                Thread.currentThread().sleep(3000);
+                            } catch (InterruptedException ex) {
+                            }
+                            i = 1;
+                            break;
+                        }
+                        else{
+                            limpaChat();
+                            System.out.print("\nAlguma informação inválida, Tente Novamente!");
+                        }
+                        try {
+                            Thread.currentThread().sleep(3000);
+                        } catch (InterruptedException ex) {
+                        }
+                        limpaChat();
+                    }
+
+                //Cadastrar Usuário
+
+                case 2:
+                    limpaChat();
+                    System.out.println("\t\tCadastro de Livro");
+                    while (i == 0) {
+                        try {
+                            Thread.currentThread().sleep(1500);
+                        } catch (InterruptedException ex) {
+                        }
+
+                        System.out.print("\nDigite o Nome do Usuário: ");
+                        nomelivro_nomeusuario = scanner.next();
+                        System.out.print("\nDigite o Endereço do Usuário: ");
+                        autor_endereco = scanner.next();
+                        System.out.print("\nDigite o email do Usuário: ");
+                        isbn_email = scanner.next();
+                        System.out.print("\nDigite o telefone do Usuário: ");
+                        ano_telefone = scanner.next();
+
+                        if((nomelivro_nomeusuario!="")&&(autor_endereco!="")&&(isbn_email!="")&&(ano_telefone!="")) {
+                            usuarios.add(user = new Usuario(nomelivro_nomeusuario, autor_endereco, isbn_email, ano_telefone));
+                            limpaChat();
+                            System.out.printf("\nUsuário Cadastrado na Biblioteca!\n\n\tNome: %s\n\tEndereço: %s\n\tEmail: %s\n\tTelefone: %s",
+                                    nomelivro_nomeusuario, autor_endereco, isbn_email, ano_telefone);
+                            try {
+                                Thread.currentThread().sleep(3000);
+                            } catch (InterruptedException ex) {
+                            }
+                            i = 1;
+                            break;
+                        }
+                        else {
+                            limpaChat();
+                            System.out.print("\nAlguma informação inválida, Tente Novamente!");
+                            try {
+                                Thread.currentThread().sleep(3000);
+                            } catch (InterruptedException ex) {
+                            }
+                        }
+                        limpaChat();
+                    }
+
+                //Consultar Acervo
+
+                case 3:
+                    limpaChat();
+                    while (i == 0) {
+
+                        if (acervo.size()>0) {
+
+                            System.out.println("\n\t\tConsulta\n\nInsira o Titulo ou ISBN do Livro desejado:");
+                            search = scanner.next();
+
+                            for (Livro livropivo : acervo) {
+                                if ((livropivo.getTitulo().equals(search)) || (livropivo.getAutor().equals(search)) ||
+                                        (livropivo.getIsbn().equals(search))) {
+
+                                    System.out.println("Livro Encontrado!!");
+                                    System.out.printf("\n\tTitulo: %s\n\tAutor: %s\n\tEditora: %s\n\tISBN: %s\n\tAno Publicação: %s\n",
+                                            livropivo.getTitulo(), livropivo.getAutor(), livropivo.getEditora(), livropivo.getIsbn(), livropivo.getAnopubli());
+                                    try {
+                                        Thread.currentThread().sleep(6000);
+                                    } catch (InterruptedException ex) {
+                                    }
+                                    i = 1;
+                                    break;
+                                } else {
+                                    limpaChat();
+                                    System.out.println("Livro não Encontrado, Tente Novamente!");
+                                    try {
+                                        Thread.currentThread().sleep(3000);
+                                    } catch (InterruptedException ex) {
+                                    }
+                                }
+
+                            }
+                        }
+                        else{
+                            System.out.println("Não há Livros no acervo...");
+                            try {
+                                Thread.currentThread().sleep(3000);
+                            } catch (InterruptedException ex) {
+                            }
+                            i = 1;
+                            break;
+                        }
+                    }
             }
 
 
