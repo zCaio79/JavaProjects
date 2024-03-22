@@ -15,6 +15,20 @@ public class Livro {
         this.disponivel = true;
     }
 
+    public String disponibilidade(){
+        if (this.disponivel){
+            return "Sim";
+        }
+        else
+            return "Não";
+    }
+    public void devolverEmprestar(Boolean situacao){
+        if (situacao)
+            this.disponivel = true;
+        else
+            this.disponivel = false;
+    }
+
     public String getTitulo() {
         return titulo;
     }
@@ -55,11 +69,12 @@ public class Livro {
         this.anopubli = anopubli;
     }
 
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+
     public boolean isDisponivel() {
         return disponivel;
     }
 
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
-    }
 }

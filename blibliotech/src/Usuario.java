@@ -4,12 +4,22 @@ public class Usuario {
     private String endereco;
     private String email;
     private String telefone;
+    private int numEmprestimos;
 
     public Usuario(String  nome,String endereco, String email,String telefone){
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
         this.email = email;
+        this.numEmprestimos = 0;
+    }
+
+    public int getNumEmprestimos() {
+        return numEmprestimos;
+    }
+
+    public void setNumEmprestimos(int numEmprestimos) {
+        this.numEmprestimos = numEmprestimos;
     }
 
     public String getNome() {
