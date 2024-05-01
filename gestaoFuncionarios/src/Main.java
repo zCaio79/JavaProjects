@@ -121,6 +121,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Opção Inválida...");
+                    break;
             }
 
         }
