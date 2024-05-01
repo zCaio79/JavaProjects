@@ -22,7 +22,41 @@ public class Funcionario {
         return clone;
     }
 
-    public Funcionario updateFuncionario(Funcionario funcionariopivot) {
+    public static Funcionario createFuncionario() {
+        Scanner sc = new Scanner(System.in);
+        boolean isCreated = false;
+        Funcionario funcionario = null;
+        String nome = null;
+        int op = 0;
+
+        System.out.println("\n\t\tRegistro de Funcionario\n");
+        while (!isCreated){
+            System.out.print("(1) - Gerente\n(2) - Programador\n");
+            System.out.println("Qual Tipo de Funcionario deseja Cadastrar?");
+            op = sc.nextInt();
+            switch (op){
+                case 1:
+                    System.out.print("Nome Do Funcionario: ");
+                    nome = sc.next();
+                    funcionario = new Gerente(nome);
+                    isCreated = true;
+                    break;
+                case 2:
+                    System.out.print("Nome Do Funcionario: ");
+                    nome = sc.next();
+                    funcionario = new Programador(nome);
+                    isCreated = true;
+                    break;
+                default:
+                    System.out.println("Opção Inválida...");
+                    break;
+            }
+        }
+        return funcionario;
+    }
+
+
+    public static Funcionario updateFuncionario(Funcionario funcionariopivot) {
 
         Funcionario backup = funcionariopivot.backupClone();
 
@@ -70,6 +104,9 @@ public class Funcionario {
                 case 4:
                     System.out.println("\nOperação Concluida!");
                     return funcionariopivot;
+                default:
+                    System.out.println("Opção Inválida...");
+                    break;
             }
         }
         return backup;
